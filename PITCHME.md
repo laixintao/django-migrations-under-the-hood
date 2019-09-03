@@ -6,30 +6,33 @@
 
 ---?color=#ffcfdf
 
-Table of Contents
+## Table of Contents
 
-- What is migrations?
+- 👉 What is migrations?
 - How does it work?
 - Pros and Cons(Compare to other sulotions)
 
-Note:
-
-Then won't see this...
 
 
 
----
+---?color=#ffcfdf
+
+## Table of Contents
+
+- What is migrations?
+- 👉 How does it work?
+- Pros and Cons(Compare to other sulotions)
 
 
 
+---?color=#ffcfdf
 
+## Table of Contents
 
+- What is migrations?
+- How does it work?
+- 👉 Pros and Cons(Compare to other sulotions)
 
+---?color=#fefdca
 
----
-
-
-
-
-
-## Thanks!
+# Thanks!
