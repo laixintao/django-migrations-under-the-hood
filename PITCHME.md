@@ -8,7 +8,7 @@
 
 ## Table of Contents
 
-@ul[list-square-bullets list-spaced-bullets font-righteous](false)
+@ul[list-square-bullets span-60](false)
 - 👉 What is migrations?
 - How does it work?
 - Pros and Cons(Compare to other sulotions)
