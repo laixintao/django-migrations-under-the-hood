@@ -8,12 +8,10 @@
 
 ## Table of Contents
 
-@ul[list-square-bullets span-60](false)
 - 👉 What is migrations?
 - How does it work?
 - Pros and Cons(Compare to other sulotions)
 - FAQs about django's migrations
-@ulend
 
 +++
 
@@ -46,6 +44,16 @@ Note:
 ## That's Django!
 
 > The web framework for perfectionists with deadlines.
+
++++
+
+## So what is migration, exactly?
+
+- foo
+- foo
+- foo
+
++++
 
 
 
