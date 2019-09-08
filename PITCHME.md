@@ -42,9 +42,10 @@
 
 ## Table of Contents
 
-- 👉 Django Migraton 的功能和原理
-- 数据库迁移的方案
-- 一些常见问题和推荐的做法
+- 👉 Django Migraiton 的功能
+- 工作原理
+- 用法和常见问题
+- Django 的选择
 
 +++
 
@@ -55,6 +56,58 @@
 3. Django ORM 负责数据库的 Table 和 Python Class 对应
 
 +++
+
+![](./assets/django-migrations-ppt/django-migrations-usage.png)
+
+```python
+class Person(models.Model):
+    name = models.CharField(max_length=64)
+    age = models.IntegerField()
+```
+
+映射到...
+
+```SQL
+mysql root@localhost:django_example> describe app1_person;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | <null>  | auto_increment |
+| name  | varchar(64) | NO   |     | <null>  |                |
++-------+-------------+------+-----+---------+----------------+
+```
+
++++
+
+### 为什么需要 migrations？
+
+- 如果没有数据库结构迁移机制的话，需要手动在代码和表结构之间同步；
+- 团队协作会很混乱；
+- 多个环境部署会很混乱；
+- 手动变更难以追踪；
+
++++
+
+### Django migrations 帮助你
+
+- 自动生成对应的表结构；
+- 记录每一次变更，内置的回滚方案；
+- “声明式”，可以被重复执行，结果幂等（这意味着解决了多环境的问题）；
+
+---
+
+## Table of Contents
+
+- Django Migraiton 的功能
+- 👉 工作原理
+- 用法和常见问题
+- Django 的选择
+
++++
+
+### Django migrations 是如何工作的？
+
+
 
 ## So what is migration, exactly?
 
