@@ -6,10 +6,13 @@
 
 ## 关于我
 
+
 - 《捕蛇者说》FM(@laike9m @Manjusaka @Adam)
 - 《Python并行编程》翻译（还没完成）
-- pingtop, git-ext, dnot-kernel, etc.
+- pingtop, git-ext, iredis, etc.
 - 从2016年开始写 Python (Django1.8)
+
+![auto-complete](assets/auto-complete.png)
 
 +++
 
@@ -39,13 +42,17 @@
 
 ## Table of Contents
 
-- 👉 What is migrations?
-- How does it work?
-- Pros and Cons(Compare to other sulotions)
-- FAQs about django's migrations
+- 👉 Django Migraton 的功能和原理
+- 数据库迁移的方案
+- 一些常见问题和推荐的做法
 
 +++
 
+## Migration 是做什么的？
+
+1. Django 负责 CURD
+2. 数据存储在 MySQL（或者其他SQL数据库中）
+3. Django ORM 负责数据库的 Table 和 Python Class 对应
 
 +++
 
@@ -65,7 +72,6 @@
 - 👉 How does it work?
 - Pros and Cons(Compare to other sulotions)
 - FAQs about django's migrations
-
 
 
 ---?color=#ffcfdf
