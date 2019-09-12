@@ -54,6 +54,7 @@
 1. Django 负责 CURD
 2. 数据存储在 MySQL（或者其他SQL数据库中）
 3. Django ORM 负责数据库的 Table 和 Python Class 对应
+4. Migrations 就是数据库结构的 Version Control System！
 
 +++
 

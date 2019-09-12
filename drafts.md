@@ -11,4 +11,3 @@ https://colorhunt.co/palette/39602
 
 - makemigrations 是不需要连接数据库的；
 - 
-
