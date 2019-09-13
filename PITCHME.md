@@ -375,9 +375,80 @@ $ python manage.py makemigrations --merge
 
 +++
 
+## FAQ7
+
+> 不要害怕自己写 migrations
+
++++
+
+当你想：
+
+1. 你的 Model 变化太复杂，想要自己写 Migrations 的时候；
+2. 在 migrate 结构的同时，有一些数据需要变化的时候；
+
++++
+
+用 `python manage.py makemigrations --empty` 生成一个空的，
+然后自己写。
+
++++
+
+RunPython & RunSQL are you friends!
+
+```Python
+
+def my_editor(app, schema_editor):
+    Person = app.get_model("app1", "Person")
+    schema_editor.remove_field(Person, "age")
 
 
-## Some Anti-SQL voice
+class Migration(migrations.Migration):
+
+    dependencies = [("app1", "0001_initial")]
+
+    operations = [migrations.RunPython(my_editor)]
+```
+
++++
+
+### 几点要注意的事情
+
+1. `app.get_model`;
+2. 不要在 RunSQL 里面记录表结构变更;
+
+---?color=#ffcfdf
+
+## Table of Contents
+
+- Django Migraiton 的功能
+- 工作原理
+- 用法和常见问题
+- 👉 Django 的选择
+
++++
+
+Django 的 migration 设计：
+
+1. migrations 记录每一次变更；
+2. 数据库一张meta表记录变更的执行情况；
+
++++
+
+这样的设计给我们什么？
+
+1. Model 的 source of truth;
+2. 变更历史记录;
+3. 但是没有隐藏所有的事情，migrations 可以被人为干涉；
+
++++
+
+- django-south
+- SQLAlchemy
+- Hibernate
+
++++
+
+## 一些反对 ORM 的声音
 
 - Defining your schema in your ORM is nuts because it ties you to one language, reduces clarity, and sometimes limits SQL features you can use
 - Existing migration tools don't pull their weight
@@ -387,21 +458,16 @@ $ python manage.py makemigrations --merge
 
 footnote : "<a href='https://github.com/abe-winter/automigrate#philosophy'>automigrate project</a>"
 
----?color=#ffcfdf
-
 +++
 
 > Exactly this, I tend to write plain SQL nowadays since you eventually have to work around some ORM specific problems in the end. 
 
--- https://lobste.rs/s/ihqxej/orms_are_backwards#c_0x76xn
+https://lobste.rs/s/ihqxej/orms_are_backwards#c_0x76xn
 
-## Table of Contents
-
-- What is migrations?
-- How does it work?
-- Pros and Cons(Compare to other sulotions)
-- 👉 FAQs about django's migrations
 
 ---?color=#fefdca
 
 # Thanks!
+
+- Blog: https://www.kawabangga.com/
+- Slide 地址： https://github.com/laixintao/django-migrations-under-the-hood
