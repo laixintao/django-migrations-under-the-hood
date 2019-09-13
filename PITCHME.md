@@ -267,7 +267,7 @@ mysql root@localhost:django_example> SELECT * FROM django_migrations LIMIT 3;
 
 ## FAQ1
 
-将 migrate 加入到启动命令中
+> 将 migrate 加入到启动命令中?
 
 既然 migrate 是幂等的，我把这个操作放到 Docker 的 CMD
 中，每次启动之前自动应用新的变更（如果有）.
@@ -297,10 +297,83 @@ What cloud go wrong?
 
 ## FAQ2
 
-migrate 执行失败
+> migrate 执行失败
+
+为什么会发生？
+
+因为 `makemigrations` 的时候并没有连接数据库，是基于逻辑生成的。真正执行的时候可能失败。
 
 +++
 
+### 如何恢复？
+
+1. 复原已经执行过的操作；
+2. 删除 `django_migrations` 记录；
+3. 修复 migrations 文件；
+4. 重新执行。
+
++++
+
+## FAQ3
+
+> 为什么我没有改动任何 Models，但是每次 `makemigrations` 都会生成新的？
+
++++
+
+### 还记得 migrations 是怎么生成的吗？
+
+![](./assets/django-migrations-ppt/django-orm.png)
+
++++
+
+Model 和 Migrations 结果对比每次都有 diff：
+
+- 代码中是不是用了结果不确定的数据结构？（比如 Python3.5 之前的 dict）
+- 代码中是否有代码每次执行的结果是不确定的？
+
++++
+
+## FAQ4
+
+> 我和同事在不同的分支生成了 000N 相同的 migrations 怎么办？
+
++++
+
+```python
+$ python manage.py makemigrations --merge
+```
+
++++
+
+## FAQ5
+
+> migrations 执行太慢了
+
++++
+
+### 重建 migrations
+
+> 因为 migrations 记录了所有的变更，如果这些变更在一段时间之后对我们不再重要，我们可以把当前的Model状态作为 0001 。
+
++++
+
+### 步骤
+
+1. 备份数据库和整个项目；
+2. `ls */migrations/*.py | grep -v __init__ | xargs rm` 删除历史 migrations
+3. 重新 `makemigrations`
+4. 删除 `django_migrations` 记录；
+5. `python manage.py migrate --fake` 填充 `django_migrations` 数据；
+
++++
+
+## FAQ6
+
+> 是否应该将生成的 migrations 文件追踪到 git 中？
+
+是的。
+
++++
 
 
 
