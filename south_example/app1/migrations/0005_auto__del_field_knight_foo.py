@@ -8,20 +8,22 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Knight.dances_whenever_able'
-        db.add_column('app1_knight', 'dances_whenever_able',
-                      self.gf('django.db.models.fields.BooleanField')(default=False),
-                      keep_default=False)
+        # Deleting field 'Knight.foo'
+        db.delete_column('app1_knight', 'foo')
+        db.delete_column('app1_knight', 'name')
 
 
     def backwards(self, orm):
-        # Deleting field 'Knight.dances_whenever_able'
-        db.delete_column('app1_knight', 'dances_whenever_able')
+        # Adding field 'Knight.foo'
+        db.add_column('app1_knight', 'foo',
+                      self.gf('django.db.models.fields.IntegerField')(null=True),
+                      keep_default=False)
 
 
     models = {
         'app1.knight': {
             'Meta': {'object_name': 'Knight'},
+            'age': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'dances_whenever_able': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
