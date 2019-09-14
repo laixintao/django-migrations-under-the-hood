@@ -442,11 +442,33 @@ Django 的 migration 设计：
 
 +++
 
-- django-south
-- SQLAlchemy
-- Hibernate
+## 我们来看一下其他的方案
 
 +++
+
+### 没有 migrations
+
+- 直接对比代码中的 Model 和数据库的 Table
+- 消除 diff
+
+### 缺点
+
+- 迁移过程不透明，不可控制
+
++++
+
+## 有 migrate 表但是不记录 migrations
+
++++
+
+## automigrate
+
+https://github.com/abe-winter/automigrate
+
++++
+
+
+
 
 ## 一些反对 ORM 的声音
 
