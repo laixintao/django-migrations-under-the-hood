@@ -198,6 +198,7 @@ Running migrations:
 
 - 真正引起数据库结构改变的操作；
 - 将 migration files 翻译成 SQL 并执行；
+- 记录 migrate 执行到哪一次了;
 
 ```Python
   File: app1/migrations/0006_auto_20190912_1150.py
@@ -244,6 +245,25 @@ mysql root@localhost:django_example> SELECT * FROM django_migrations LIMIT 3;
 | 2  | auth         | 0001_initial | 2019-09-08 09:08:51.355292 |
 | 3  | admin        | 0001_initial | 2019-09-08 09:08:51.544356 |
 +----+--------------+--------------+----------------------------+
+```
+
++++
+
+### unapply 功能
+
+```Python
+➜ python manage.py migrate app1 0001
+Operations to perform:
+  Target specific migration: 0001_initial, from app1
+Running migrations:
+  Rendering model states... DONE
+  Unapplying app1.0003_remove_person_intc... OK
+  Unapplying app1.0002_remove_person_intn... OK
+➜ python manage.py migrate app1 0002
+Operations to perform:
+  Target specific migration: 0002_remove_person_intn, from app1
+Running migrations:
+  Applying app1.0002_remove_person_intn... OK
 ```
 
 +++
@@ -498,9 +518,6 @@ Django 的 migration 设计：
 https://github.com/abe-winter/automigrate
 
 +++
-
-
-
 
 ## 一些反对 ORM 的声音
 
