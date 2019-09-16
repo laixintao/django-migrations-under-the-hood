@@ -454,6 +454,22 @@ Django 的 migration 设计：
 
 +++
 
+## Before Django Migrations
+
+### Django-South
+
++++
+
+- Django1.6 只支持创建表, 修改Model只能自己去修改表；
+- Migrations 方案混杂，几年之后，South 成为事实标准；
+- South 遇到了自己的瓶颈, Andrew 希望将migrations加入到 Django core 中，完全替代South;
+- 第一个 [Pull Request](https://github.com/django/django/pull/376) 漫长而复杂(~7k changes)，这项工作将漫长而困难;
+- Andrew 发起[众筹](https://www.kickstarter.com/projects/andrewgodwin/schema-migrations-for-django)，希望每周投入80小时到这项工作中；
+- 众筹发起1小时完成了目标，4小时筹集 $7000；
+- Django1.7 开始支持migrations 🎉
+
++++
+
 ### Django-South
 
 ```Python
@@ -486,11 +502,21 @@ Django 的 migration 设计：
 
 +++
 
-这样的设计给我们什么？
+### Django Migrations vs Django-South
+
+- Django migrations 没有写 backwards
+- Django migrations 没有 models，需要从第一个migrations开始依赖，South 只依赖前一个
+
+Django migrations 对开发者更友好，South 冗余信息跟多，速度更快
+
++++
+
+Django 这样的设计给我们什么？
 
 1. Model 的 source of truth;
 2. 变更历史记录;
 3. 但是没有隐藏所有的事情，migrations 可以被人为干涉；
+4. 方便人工编辑;
 
 +++
 
