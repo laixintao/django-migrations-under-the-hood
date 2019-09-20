@@ -547,11 +547,9 @@ https://github.com/abe-winter/automigrate
 
 ## 一些反对 ORM 的声音
 
-- Defining your schema in your ORM is nuts because it ties you to one language, reduces clarity, and sometimes limits SQL features you can use
-- Existing migration tools don't pull their weight
-- SQL is a more general skill than ORMs and other tools should therefore mirror SQL
-- Mirroring live databases to get a schema is insane because are you tunneling to prod to run your linter? Live DB shouldn't be available to developers. Source of truth should be git.
-- Schema should be versioned using the same git shas as code so the logic is easy to detect if a deploy requires a migration
+- ORM 引入了新的理解成本，大家已经都熟悉SQL了；
+- ORM 并没有屏蔽所有的问题，会遇到只能写SQL才能解决；
+- 增加了解决问题的复杂性，和了解事实的复杂性；
 
 footnote : "<a href='https://github.com/abe-winter/automigrate#philosophy'>automigrate project</a>"
 
