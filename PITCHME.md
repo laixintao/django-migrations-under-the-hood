@@ -313,7 +313,7 @@ What cloud go wrong?
 1. 用一个单独的 Docker image 来做 migrate；
 2. migrate 要向后兼容（这是另一个故事了）
 
-+++ 
++++
 
 ## FAQ2
 
@@ -392,6 +392,16 @@ $ python manage.py makemigrations --merge
 > 是否应该将生成的 migrations 文件追踪到 git 中？
 
 是的。
+
++++
+
+### 提交之前进行检查
+
+![](./assets/django-migrations-ppt/check-before-commit.png)
+
++++
+
+### 💡 尽量让 migrations 有意义，像 git commit message 那样。
 
 +++
 
@@ -550,8 +560,6 @@ https://github.com/abe-winter/automigrate
 - ORM 引入了新的理解成本，大家已经都熟悉SQL了；
 - ORM 并没有屏蔽所有的问题，会遇到只能写SQL才能解决；
 - 增加了解决问题的复杂性，和了解事实的复杂性；
-
-footnote : "<a href='https://github.com/abe-winter/automigrate#philosophy'>automigrate project</a>"
 
 +++
 
