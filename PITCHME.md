@@ -292,7 +292,7 @@ Running migrations:
 既然 migrate 是幂等的，我把这个操作放到 Docker 的 CMD
 中，每次启动之前自动应用新的变更（如果有）.
 
-What cloud go wrong?
+What could go wrong?
 
 +++
 
