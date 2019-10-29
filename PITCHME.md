@@ -517,7 +517,7 @@ Django 的 migration 设计：
 - Django migrations 没有写 backwards
 - Django migrations 没有 models，需要从第一个migrations开始依赖，South 只依赖前一个
 
-Django migrations 对开发者更友好，South 冗余信息跟多，速度更快
+Django migrations 对开发者更友好，South 冗余信息更多，速度更快
 
 +++
 
